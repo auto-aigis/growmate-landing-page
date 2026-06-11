@@ -94,16 +94,10 @@ export const settingsApi = {
     apiFetch<{ settings: any }>("/api/settings", {
       method: "PUT",
       body: JSON.stringify(data),
-export const settingsApi = {
-  get: async () =>
-    apiFetch<{ settings: any }>("/api/settings"),
-  update: async (data: any) =>
-    apiFetch<{ settings: any }>("/api/settings", {
-      method: "PUT",
-      body: JSON.stringify(data),
     }),
 };
 
+export const chatApi = {
 export const chatApi = {
   history: async () =>
     apiFetch<any[]>("/api/chat/history"),
