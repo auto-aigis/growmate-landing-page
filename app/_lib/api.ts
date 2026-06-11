@@ -48,10 +48,9 @@ export const authApi = {
       body: JSON.stringify({ email }),
     }),
 
-  logout: async () =>
-    apiFetch<{ status: string }>("/api/auth/logout", { method: "POST" }),
+me: async () => apiFetch<{ user: any }>("/api/auth/me"),
 
-  me: async () => apiFetch<{ user: any }>("/api/auth/me"),
+  subscription: async () => apiFetch<any>("/api/auth/subscription"),
 };
 
 export const harvestApi = {
@@ -106,5 +105,19 @@ export const chatApi = {
     apiFetch<any>("/api/chat/send", {
       method: "POST",
       body: JSON.stringify({ message }),
+    }),
+};
+
+export const dashboardApi = {
+  getGrowPlan: async () => apiFetch<any>("/api/dashboard/grow-plan"),
+  getCalendar: async () => apiFetch<any>("/api/dashboard/calendar"),
+};
+
+export const diagnoseApi = {
+  usage: async () => apiFetch<{ used: number; limit: number }>("/api/diagnose/usage"),
+  submit: async (imageBase64: string, description: string) =>
+    apiFetch<any>("/api/diagnose/submit", {
+      method: "POST",
+      body: JSON.stringify({ image: imageBase64, description }),
     }),
 };

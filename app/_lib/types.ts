@@ -32,3 +32,51 @@ export interface HarvestRecord {
   harvested_at: string;
   quality_grade: string;
 }
+
+export interface ChatMessage {
+  id: string;
+  role: "user" | "assistant";
+  content: string;
+  created_at: string;
+}
+
+export interface ChatUsage {
+  used: number;
+  limit: number;
+}
+
+export interface GrowPlan {
+  crops: Array<{
+    name: string;
+    why_it_suits: string;
+    days_to_harvest: number;
+    planting_window: string;
+    companion_planting?: string[];
+  }>;
+}
+
+export interface Calendar {
+  events: Array<{
+    date: string;
+    crop_name: string;
+    action: string;
+  }>;
+}
+
+export interface HarvestLog {
+  id: string;
+  crop_name: string;
+  harvest_date: string;
+  quantity?: number;
+  quantity_unit?: string;
+}
+
+export interface Subscription {
+  tier: string;
+  status: string;
+}
+
+export interface DiagnosisUsage {
+  used: number;
+  limit: number;
+}
