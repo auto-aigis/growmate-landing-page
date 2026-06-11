@@ -51,5 +51,67 @@ export const authApi = {
   logout: async () =>
     apiFetch<{ status: string }>("/api/auth/logout", { method: "POST" }),
 
-  me: async () => apiFetch<{ user: any }>("/api/auth/me"),
+me: async () => apiFetch<{ user: any }>("/api/auth/me"),
+};
+
+export const harvestApi = {
+  list: async () =>
+    apiFetch<{ harvests: any[] }>("/api/harvests"),
+  create: async (data: any) =>
+    apiFetch<{ harvest: any }>("/api/harvests", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+};
+
+export const onboardingApi = {
+  complete: async (data: any) =>
+    apiFetch<{ status: string }>("/api/onboarding/complete", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+  status: async () =>
+    apiFetch<{ completed: boolean }>("/api/onboarding/status"),
+};
+
+export const paymentsApi = {
+  checkout: async (tier: string, billing_interval: string) =>
+    apiFetch<{ price_id: string }>("/api/payments/checkout", {
+      method: "POST",
+      body: JSON.stringify({ tier, billing_interval }),
+    }),
+  verifyTransaction: async (transaction_id: string) =>
+    apiFetch<{ status: string }>("/api/payments/verify-transaction", {
+      method: "POST",
+      body: JSON.stringify({ transaction_id }),
+    }),
+};
+
+export const settingsApi = {
+  get: async () =>
+    apiFetch<{ settings: any }>("/api/settings"),
+  update: async (data: any) =>
+    apiFetch<{ settings: any }>("/api/settings", {
+      method: "PUT",
+      body: JSON.stringify(data),
+export const settingsApi = {
+  get: async () =>
+    apiFetch<{ settings: any }>("/api/settings"),
+  update: async (data: any) =>
+    apiFetch<{ settings: any }>("/api/settings", {
+      method: "PUT",
+      body: JSON.stringify(data),
+    }),
+};
+
+export const chatApi = {
+  history: async () =>
+    apiFetch<any[]>("/api/chat/history"),
+  usage: async () =>
+    apiFetch<{ used: number; limit: number }>("/api/chat/usage"),
+  send: async (message: string) =>
+    apiFetch<any>("/api/chat/send", {
+      method: "POST",
+      body: JSON.stringify({ message }),
+    }),
 };

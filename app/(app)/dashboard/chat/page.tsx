@@ -115,7 +115,7 @@ function ChatContent() {
           {messages.length === 0 && (
             <div className="text-center text-gray-500 py-8">
               <p>Ask me anything about growing food in your space!</p>
-              <p className="text-sm mt-2">e.g., "Why are my tomato leaves yellowing?"</p>
+<p className="text-sm mt-2">e.g., &quot;Why are my tomato leaves yellowing?&quot;</p>
             </div>
           )}
           {messages.map((msg) => (
