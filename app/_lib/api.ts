@@ -51,7 +51,7 @@ export const authApi = {
   logout: async () =>
     apiFetch<{ status: string }>("/api/auth/logout", { method: "POST" }),
 
-me: async () => apiFetch<{ user: any }>("/api/auth/me"),
+  me: async () => apiFetch<{ user: any }>("/api/auth/me"),
 };
 
 export const harvestApi = {
@@ -97,7 +97,6 @@ export const settingsApi = {
     }),
 };
 
-export const chatApi = {
 export const chatApi = {
   history: async () =>
     apiFetch<any[]>("/api/chat/history"),
